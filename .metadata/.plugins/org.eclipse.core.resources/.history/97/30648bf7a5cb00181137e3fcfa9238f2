@@ -1,0 +1,5 @@
+package com.lc.action;
+
+public class UserServlet {
+
+}

@@ -1,0 +1,42 @@
+package com.lc.service;
+
+import java.sql.Connection;
+
+public class ConnectionPool {
+	private static ThreadLocal<Connection> connectionHolder = new ThreadLocal<Connection>() {
+		private Connection connection = null;
+		
+		protected Connection initialValue() {
+			return getConnection();
+		}
+		
+		public Connection getConnection() {
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			
+			if(this.connection == null) {
+				try {
+					this.connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/servlet_test?characterEncoding=UTF-8", "root", "admin");
+					this.connection.setAutoCommit(false);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			return this.connection;
+		}
+
+	};
+	
+	public static Connection getConnection() {
+		return connectionHolder.get();
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(ConnectionPool.getConnection() == null);
+	}
+}

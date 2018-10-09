@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;servlet-test/src/main/webapp/sql/init-database&apos; to &apos;init-database.sql&apos;" description="Rename resource &apos;init-database&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/sql/init-database" name="init-database.sql" stamp="1539080027927" updateReferences="true"/>
+</session>
